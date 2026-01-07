@@ -18,6 +18,7 @@ const JSON_FORMAT = is.arrayOf(
 const LINGUI_FORMAT = is.objectOf(
   is.shape({
     defaults: is.maybe(is.string),
+    message: is.maybe(is.string),
   }),
 );
 
@@ -52,7 +53,7 @@ const normalize: (any, string) => AssertionType<typeof JSON_FORMAT> = (
       const parsed = is(json, LINGUI_FORMAT);
       return Object.keys(is(json, LINGUI_FORMAT)).map((key) => ({
         id: normalizeId(key),
-        defaultMessage: normalizeMessage(parsed[key].defaults || key),
+        defaultMessage: normalizeMessage(parsed[key].message || parsed[key].defaults || key),
       }));
     case 'json':
     default:
