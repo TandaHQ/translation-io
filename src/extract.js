@@ -42,11 +42,9 @@ const normalize: (any, string) => AssertionType<typeof JSON_FORMAT> = (
 ) => {
   switch (format) {
     case 'minimal':
-      return Object.keys(is(json, MINIMAL_FORMAT)).map((key) => ({
+      return Object.entries(is(json, MINIMAL_FORMAT)).map(([key, value]) => ({
         id: normalizeId(key),
-        // when in `minimal` format, the name of the key in the source is
-        // the default message
-        defaultMessage: normalizeMessage(key),
+        defaultMessage: normalizeMessage(value),
       }));
     case 'lingui':
       // eslint-disable-next-line no-case-declarations
