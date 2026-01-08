@@ -1,6 +1,6 @@
 {
   "name": "@tanda/translation-io",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "author": "David Buchan-Swanson <david.buchanswanson@gmail.com>",
   "license": "MIT",
   "bin": {
