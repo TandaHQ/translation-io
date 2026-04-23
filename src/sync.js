@@ -2,7 +2,7 @@
 
 import { join } from 'path';
 import is from 'sarcastic';
-import mkdirp from 'mkdirp';
+import { sync as mkdirpSync } from 'mkdirp';
 import { load } from './extract';
 import args from './args';
 import * as config from './config';
@@ -55,7 +55,7 @@ export default async () => {
   log.info('Translations loaded.');
 
   log.info('Ensuring that the output directory exists...');
-  mkdirp.sync(config.output());
+  mkdirpSync(config.output());
   log.info('Output directory exists.');
 
   log.info('Writing translation file for source locale.');
